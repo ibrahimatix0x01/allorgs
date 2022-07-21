@@ -1,3 +1,4 @@
+#!/bin/bash
 echo [*] Executing ALLORGS against: Targets
 echo "[*] Launching Subfinder"
 subfinder -dL targets.txt -o subfinder.txt
