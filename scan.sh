@@ -1,20 +1,12 @@
-TARGET= targets.txt
-if ! [ $TARGET ]; then
-  echo "[!] No target provided."
-  echo ">> $0 <targets.txt>"
-  exit 1
-fi
-OUT_DIR=$(pwd)
-
-echo [*] Executing ALLORGS against: ${TARGET}
+echo [*] Executing ALLORGS against: Targets
 echo "[*] Launching Subfinder"
-subfinder -dL $TARGET -o $OUT_DIR/$TARGET/subfinder.txt
+subfinder -dL targets.txt -o subfinder.txt
 RES=$(cat subfinder.txt | wc -l)
-echo -e "\n[+] AllORGS complete with ${RES} results"
-echo "[+] Output are saved to: $OUT_DIR/$TARGET/subfinder.txt"
-echo [*] Executing ALLORGS against: All the domains
-cat $OUT_DIR/$TARGET/subfinder.txt | httprobe > $OUT_DIR/$TARGET/probed.txt
-echo "[+] Live subdomains are saved to: $OUT_DIR/$TARGET/probed.txt"
-nuclei -list $OUT_DIR/$TARGET/probed.txt -o $OUT_DIR/$TARGET/final.txt
-echo "[+] Final results are saved to: $OUT_DIR/$TARGET/final.txt"
-exit 0
+echo -e "\n[+] Subfinder completed with ${RES} results"
+echo "[+] Output are saved to: subfinder.txt"
+echo [*] Executing HTTPROBE against: Subfinder result
+cat subfinder.txt | httprobe > probed.txt
+echo "[+] Live subdomains are saved to: probed.txt"
+nuclei -list probed.txt -o final.txt
+echo "[+] Final results are saved to: final.txt"
+
