@@ -1,4 +1,4 @@
-TARGET=$1
+TARGET= targets.txt
 if ! [ $TARGET ]; then
   echo "[!] No target provided."
   echo ">> $0 <targets.txt>"
