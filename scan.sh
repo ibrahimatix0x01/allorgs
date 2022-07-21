@@ -5,7 +5,7 @@ if ! [ $TARGET ]; then
   exit 1
 fi
 OUT_DIR=$(pwd)
-mkdir $TARGET
+
 echo [*] Executing ALLORGS against: ${TARGET}
 echo "[*] Launching Subfinder"
 subfinder -dL $TARGET -o $OUT_DIR/$TARGET/subfinder.txt
