@@ -8,7 +8,7 @@ OUT_DIR=$(pwd)
 mkdir $TARGET
 echo [*] Executing ALLORGS against: ${TARGET}
 echo "[*] Launching Subfinder"
-sub -dL $TARGET -o $OUT_DIR/$TARGET/subfinder.txt
+subfinder -dL $TARGET -o $OUT_DIR/$TARGET/subfinder.txt
 RES=$(cat subfinder.txt | wc -l)
 echo -e "\n[+] AllORGS complete with ${RES} results"
 echo "[+] Output are saved to: $OUT_DIR/$TARGET/subfinder.txt"
